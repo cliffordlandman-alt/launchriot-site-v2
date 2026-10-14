@@ -87,7 +87,7 @@ h1,h2,h3{font-family:"Space Grotesk",sans-serif;letter-spacing:-.045em;line-heig
 .dc-chips{display:flex;flex-wrap:wrap;gap:8px}.dc-chips b{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
 .dc-foot{display:flex;align-items:center;gap:8px;padding:14px 20px;border-top:1px solid var(--line);font-size:13px;font-weight:700;color:var(--mint)}
 
-.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .price{padding:28px 24px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);display:flex;flex-direction:column}
 .price.feat{border-color:rgba(131,231,187,.45);background:linear-gradient(180deg,rgba(131,231,187,.07),var(--card) 40%)}
 .price h3{font-size:22px;margin-top:14px;font-weight:600}.price>p{font-size:14px;color:var(--muted);margin:8px 0 0;min-height:44px}
