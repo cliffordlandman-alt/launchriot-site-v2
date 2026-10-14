@@ -20,7 +20,8 @@
   }
   function waLink(d){ return "https://wa.me/" + WA + "?text=" + encodeURIComponent(message(d)); }
   function mailLink(d){ return "mailto:" + MAIL + "?subject=" + encodeURIComponent("Demo request: " + d.companyName) + "&body=" + encodeURIComponent(message(d)); }
-  function showDone(text, d, offer){
+  function showDone(text, d, offer, title){
+    document.getElementById("done-title").textContent = title || "Thanks, your demo request is in.";
     f.querySelectorAll("label,.f2,.hint,#submit-btn").forEach(function(e){ e.style.display="none"; });
     doneMsg.textContent = text; acts.innerHTML = "";
     if(offer){
@@ -46,14 +47,14 @@
         systemsUsed:[], setupNeeds:[], currentAiTools:[], notes:"[Demo request via site v2] " + (d.notes || "")};
       fetch(LEAD_API, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)})
         .then(function(r){ if(!r.ok) throw new Error(r.status); showDone("We’ll review it and reply on WhatsApp or email.", d, false); })
-        .catch(function(){ showDone("We couldn’t save it automatically. Send it to us in one tap:", d, true); })
+        .catch(function(){ showDone("We couldn’t save it automatically. Send it to us in one tap:", d, true, "Almost there"); })
         .finally(function(){ btn.disabled = false; });
     } else if(d.phone){
       window.open(waLink(d), "_blank", "noopener");
-      showDone("WhatsApp should open with your request ready to send. If it didn’t, use a button below.", d, true);
+      showDone("WhatsApp should open with your request ready to send. If it didn’t, use a button below.", d, true, "One last step");
     } else {
       window.location.href = mailLink(d);
-      showDone("Your email app should open with your request ready to send. If it didn’t, use a button below.", d, true);
+      showDone("Your email app should open with your request ready to send. If it didn’t, use a button below.", d, true, "One last step");
     }
   });
 })();
